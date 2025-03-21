@@ -1,13 +1,11 @@
 import './App.css'
-
+import Usestate from './components/Usestate'
 function App() {
   
 
   return (
     <>
-  <h1 >
-  testasdasdasdasdasdasd
-  </h1>
+    <Usestate/>
       
     </>
   )
