@@ -50,7 +50,7 @@ function Usestate() {
 </div>
 
       {submitted ? (
-        <div className="p-4 bg-green-50 border border-green-300 rounded-lg mt-4">
+        <div className="p-4 bg-green-50 border border-green-300 rounded-lg mt-4 mb-[10px]">
           <p className="text-green-700 font-semibold">✅ ส่งแบบสำรวจสำเร็จ!</p>
           <p>ชื่อ: {name}</p>
           <p>อีเมล: {email}</p>
@@ -78,24 +78,25 @@ function Usestate() {
           </div>
 
           <div>
-            <label className="block">เลือกหนังที่ชอบ</label>
+            <div className="block">เลือกหนังที่ชอบ</div>
             {movies.map((item) => (
-              <label key={item.title} className="block">
+              <div key={item.title} className="flex  item-center gap-[5px]" >
                 <input type="radio" name="movie" value={item.title} checked={selectedOption === item.title}
-                  onChange={(e) => setSelectedOption(e.target.value)} className="mr-2" />
-                {item.title} ({item.year}) - {item.director}
-              </label>
+                  onChange={(e) => setSelectedOption(e.target.value)} className=" text-lg font-semibold  flex items-start space-x-3 p-2 border rounded-lg hover:bg-gray-100 cursor-pointer flex-col " />
+                <label htmlFor="">{item.title} ({item.year}) <p className="text-sm text-gray-600">Director: {item.director}</p>
+                </label>
+              </div>
             ))}
           </div>
 
           <div>
             <label className="block">ความคิดเห็นเกี่ยวกับหนัง</label>
-            <textarea value={feedback} onChange={updateFeedback} className="w-full border p-2 rounded"></textarea>
+            <textarea value={feedback} onChange={updateFeedback} placeholder="พิมพ์ความคิดเห็นของคุณที่นี่..." className="w-full h-[100px] border p-2 rounded"></textarea>
           </div>
 
           <div className="flex justify-between">
-            <button type="button" onClick={handleReset} className="bg-gray-300 px-4 py-2 rounded">Reset</button>
-            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">ส่งแบบสำรวจ</button>
+            <button type="button" onClick={handleReset} className="bg-grey-600 px-4 py-2 rounded cursor-pointer">รีเซ็ต</button>
+            <button type="submit" className="bg-gradient-to-r from-purple-500 to-blue-500 p-4 rounded-t-lg flex items-center text-white px-4 py-2 rounded cursor-pointer">ส่งแบบสำรวจ</button>
           </div>
         </form>
       )}
